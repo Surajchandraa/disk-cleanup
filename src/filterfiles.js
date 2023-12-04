@@ -39,9 +39,9 @@ function filterSmaller(dpath, size, callback) {
                             if (errorEncountered) {
                                 callback('Some files could not be deleted');
                             } else if (filesDeleted === 0) {
-                                callback(null, `No files of size ${size} found`);
+                                callback(null, `No files of size smaller than ${size} found`);
                             } else {
-                                callback(null, `Successfully deleted ${filesDeleted} files of size ${size}`);
+                                callback(null, `Successfully deleted ${filesDeleted} files of size smaller than ${size}`);
                             }
                         }
                     });
@@ -51,9 +51,9 @@ function filterSmaller(dpath, size, callback) {
                         if (errorEncountered) {
                             callback('Some files could not be deleted');
                         } else if (filesDeleted === 0) {
-                            callback(null, `No files of size ${size} found`);
+                            callback(null, `No files of size smaller than ${size} found`);
                         } else {
-                            callback(null, `Successfully deleted ${filesDeleted} files of size ${size}`);
+                            callback(null, `Successfully deleted ${filesDeleted} files of size smaller than ${size}`);
                         }
                     }
                 }
@@ -101,9 +101,9 @@ function filterGreater(dpath, size, callback) {
                             if (errorEncountered) {
                                 callback('Some files could not be deleted');
                             } else if (filesDeleted === 0) {
-                                callback(null, `No files of size ${size} found`);
+                                callback(null, `No files of size greater than ${size} found`);
                             } else {
-                                callback(null, `Successfully deleted ${filesDeleted} files of size ${size}`);
+                                callback(null, `Successfully deleted ${filesDeleted} files of size greater than ${size}`);
                             }
                         }
                     });
@@ -113,9 +113,9 @@ function filterGreater(dpath, size, callback) {
                         if (errorEncountered) {
                             callback('Some files could not be deleted');
                         } else if (filesDeleted === 0) {
-                            callback(null, `No files of size ${size} found`);
+                            callback(null, `No files of size greater than ${size} found`);
                         } else {
-                            callback(null, `Successfully deleted ${filesDeleted} files of size ${size}`);
+                            callback(null, `Successfully deleted ${filesDeleted} files of size greater than ${size}`);
                         }
                     }
                 }
@@ -186,3 +186,6 @@ function filterEqual(dpath, size, callback) {
         });
     });
 }
+
+
+module.exports={filterEqual,filterGreater,filterSmaller}

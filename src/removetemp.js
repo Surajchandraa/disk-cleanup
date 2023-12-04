@@ -3,7 +3,7 @@ const path = require("path");
 
 
 
-function remove_temp(dpath, callback) {
+function removeTemporary(dpath, callback) {
     fs.readdir(dpath, (err, files) => {
         if (err) {
             callback(err, null);
@@ -26,6 +26,8 @@ function remove_temp(dpath, callback) {
                     } else {
                         tempFilesFound = true;
                     }
+
+                   
 
                     if (filesProcessed === files.length) {
                         if (errors.length > 0) {
@@ -52,3 +54,6 @@ function remove_temp(dpath, callback) {
         });
     });
 }
+
+
+module.exports=removeTemporary
