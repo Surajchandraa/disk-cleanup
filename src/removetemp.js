@@ -6,43 +6,49 @@ const path = require("path");
 function remove_temp(dpath, callback) {
     fs.readdir(dpath, (err, files) => {
         if (err) {
-            console.error('Error reading directory:', err);
             callback(err, null);
             return;
         }
 
         let tempFilesFound = false;
-        let errormsgs = [];
+        let errors = [];
+        let filesProcessed = 0;
 
-        const deleteFile = (index) => {
-            if (index >= files.length) {
-                if (errormsgs.length > 0) {
-                    callback(errormsgs.join('\n'), null);
-                } else if (tempFilesFound) {
-                    callback(null, 'Deletion successful');
-                } else {
-                    callback(null, 'Temporary files not found');
-                }
-                return;
-            }
-
-            const file = files[index];
+        files.forEach((file, index) => {
             const filePath = path.join(dpath, file);
 
             if (file.endsWith('.tmp')) {
                 console.log('Removing:', filePath);
                 fs.unlink(filePath, error => {
+                    filesProcessed++;
                     if (error) {
-                        errormsgs.push(`Error Deleting ${file} ${error}`);
+                        errors.push(`Error deleting ${file}: ${error}`);
+                    } else {
+                        tempFilesFound = true;
                     }
-                    tempFilesFound = true;
-                    deleteFile(index + 1);
+
+                    if (filesProcessed === files.length) {
+                        if (errors.length > 0) {
+                            callback(errors.join('\n'), null);
+                        } else if (tempFilesFound) {
+                            callback(null, 'Deletion successful');
+                        } else {
+                            callback(null, 'Temporary files not found');
+                        }
+                    }
                 });
             } else {
-                deleteFile(index + 1);
+                filesProcessed++;
+                if (filesProcessed === files.length) {
+                    if (errors.length > 0) {
+                        callback(errors.join('\n'), null);
+                    } else if (tempFilesFound) {
+                        callback(null, 'Deletion successful');
+                    } else {
+                        callback(null, 'Temporary files not found');
+                    }
+                }
             }
-        };
-
-        deleteFile(0);
+        });
     });
 }
