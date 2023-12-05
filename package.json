@@ -1,0 +1,25 @@
+{
+  "name": "disk-cleanup",
+  "version": "1.0.0",
+  "description": "This project offers a set of functions to perform disk cleanup operations in Node.js, including backup creation, restoration, and removal of files and directories.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Surajchandraa/disk-cleanup.git"
+  },
+  "keywords": ["disk-cleanup",
+  "file-management",
+  "node.js",
+  "file-size-filter",
+  "file-deletion",
+  "utility-functions"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Surajchandraa/disk-cleanup/issues"
+  },
+  "homepage": "https://github.com/Surajchandraa/disk-cleanup#readme"
+}
