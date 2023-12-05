@@ -68,3 +68,6 @@ function removeallbackup(backupPath) {
         });
     });
 }
+
+
+module.exports={createBackupDirectory,restoreBackup,backupFile,clearBackup,removeallbackup}
