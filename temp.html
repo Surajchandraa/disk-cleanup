@@ -1,0 +1,126 @@
+<h1>disk-cleanup</h1>
+<p>This project offers a set of functions to perform disk cleanup operations in Node.js, including backup creation, restoration, and removal of files and directories.</p>
+<h2>Prerequisites:</h2>
+<ul>
+<li>Make sure you have Node.js installed on your system.</li>
+</ul>
+<h2>Installation:</h2>
+<pre><code class="language-bash">    npm install disk-cleanup
+</code></pre>
+<h2>Usage:</h2>
+<blockquote>
+<blockquote>
+<p><em><strong>Removing Temporary Files</strong></em></p>
+</blockquote>
+</blockquote>
+<ul>
+<li>The removeTemporary function is used to delete temporary files from a specified directory.</li>
+<li>
+<pre><code class="language-js">      const diskCleanup = require('disk-cleanup');
+
+  diskCleanup.removeTemporary('/path/to/directory', (err, result) =&gt; {
+      if (err) {
+          console.error('Error:', err);
+      } else {
+          console.log('Result:', result);
+      }
+  });
+
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<blockquote>
+<p><em><strong>Backup and Restore</strong></em></p>
+</blockquote>
+</blockquote>
+<ul>
+<li>This package also offers backup and restore functionalities.</li>
+<li>
+<pre><code class="language-js">      const diskCleanup = require('disk-cleanup');
+
+
+      const backupPath = diskCleanup.createBackupDirectory('/path/to/directory');  // this function will create a backup directory inside the directory given by you
+      console.log('Backup directory created at:', backupPath); 
+
+
+      backupFile(&quot;/path/of/file&quot;,&quot;/path/of/backup directory&quot;);
+      // this function will backup a file you provided by path inside backup directory path you provided.
+
+
+      restoreBackup(&quot;backupPath&quot;, &quot;filename&quot;, &quot;dirPath&quot;);
+      //restore the backup file
+      // backuppath- backup directory path inside which the file is saved or backup.
+      // filename- the name of file
+      // dirpath- path of directory where you want to restore
+
+      removeBackupFile(&quot;backupPath&quot;, &quot;fileName&quot;);
+      // removes the backup file
+      // backuppath - this is the path of backup directory
+      // filename - file name u want to delete
+
+      removeBackupdir(&quot;backupPath&quot;);
+      //remove the backup directory all the backup will be deleted
+      //backuppath - path of backup directory you want to delete
+
+
+
+
+
+</code></pre>
+</li>
+</ul>
+<blockquote>
+<blockquote>
+<p><em><strong>Filter by File Size</strong></em></p>
+</blockquote>
+</blockquote>
+<ul>
+<li>
+<pre><code class="language-js">
+  const diskCleanup = require('disk-cleanup');
+
+
+  // Deletes files of a specified size from a given directory.
+  diskCleanup.filterEqual('/path/to/directory', size, (err, result) =&gt; { 
+      if (err) {
+          console.error('Error:', err);
+      } else {
+          console.log('Result:', result);
+      }
+  });
+
+
+  //Deletes files greater than a specified size from a given directory.
+  diskCleanup.filterGreater('/path/to/directory', size, (err, result) =&gt; {
+  if (err) {
+      console.error('Error:', err);
+  } else {
+      console.log('Result:', result);
+  }
+  });
+
+
+  //Deletes files smaller than a specified size from a given directory.
+  diskCleanup.filterSmaller('/path/to/directory', size, (err, result) =&gt; {
+  if (err) {
+      console.error('Error:', err);
+  } else {
+      console.log('Result:', result);
+  }
+  });
+
+
+  
+</code></pre>
+</li>
+</ul>
+<h2>Contributing:</h2>
+<ul>
+<li>Contributions are welcome! Please feel free to submit issues or pull requests.</li>
+</ul>
+<h2>License</h2>
+<ul>
+<li>This project is licensed under the MIT License.</li>
+<li>Feel free to modify or expand the README further based on your preferences or any additional information you wish to provide!</li>
+</ul>
