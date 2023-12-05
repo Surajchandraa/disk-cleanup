@@ -16,8 +16,8 @@
   "file-size-filter",
   "file-deletion",
   "utility-functions"],
-  "author": "",
-  "license": "ISC",
+  "author": "Suraj chandra",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Surajchandraa/disk-cleanup/issues"
   },

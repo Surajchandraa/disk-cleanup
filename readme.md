@@ -99,12 +99,15 @@ This project offers a set of functions to perform disk cleanup operations in Nod
     });
 
 
-
-
-
-
-
-
-
     
     ```
+
+## Contributing:
+
+- Contributions are welcome! Please feel free to submit issues or pull requests. 
+
+## License
+- This project is licensed under the MIT License.
+- Feel free to modify or expand the README further based on your preferences or any additional information you wish to provide!
+
+
