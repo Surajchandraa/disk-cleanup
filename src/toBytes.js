@@ -28,4 +28,4 @@ function yb_to_bytes(data) {
 }
 
 
-modules.exports={eb_to_bytes,gb_to_bytes,kb_to_bytes,mb_to_bytes,pb_to_bytes,tb_to_bytes,yb_to_bytes,zb_to_bytes}
+module.exports={eb_to_bytes,gb_to_bytes,kb_to_bytes,mb_to_bytes,pb_to_bytes,tb_to_bytes,yb_to_bytes,zb_to_bytes}

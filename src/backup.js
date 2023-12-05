@@ -14,7 +14,6 @@ function createBackupDirectory(directoryPath) {
 function restoreBackup(backupPath, filename, dirPath) {
     const backupFilePath = path.join(backupPath, filename);
     const restoredFilePath = path.join(dirPath, filename);
-
     fs.copyFileSync(backupFilePath, restoredFilePath);
 }
 
@@ -25,10 +24,10 @@ function backupFile(filePath, backupPath) {
     const fileName = path.basename(filePath);
     const backupFilePath = path.join(backupPath, fileName);
 
-    fs.copyFileSync(filePath, backupFilePath); // Copy the file to the backup directory
+    fs.copyFileSync(filePath, backupFilePath); 
 }
 
-function clearBackup(backupPath, fileName) {
+function removeBackupFile(backupPath, fileName) {
     const filePath = path.join(backupPath, fileName);
 
     fs.unlink(filePath, (err) => {
@@ -41,7 +40,7 @@ function clearBackup(backupPath, fileName) {
 }
 
 
-function removeallbackup(backupPath) {
+function removeBackupdir(backupPath) {
     fs.readdir(backupPath, (err, files) => {
         if (err) {
             console.error('Error reading directory:', err);
@@ -70,4 +69,4 @@ function removeallbackup(backupPath) {
 }
 
 
-module.exports={createBackupDirectory,restoreBackup,backupFile,clearBackup,removeallbackup}
+module.exports={createBackupDirectory,restoreBackup,backupFile,removeBackupdir,removeBackupFile};
