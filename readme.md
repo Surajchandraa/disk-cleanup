@@ -69,6 +69,7 @@ This project offers a set of functions to perform disk cleanup operations in Nod
     const diskCleanup = require('disk-cleanup');
 
 
+    //size will given in the bytes in all functions
     // Deletes files of a specified size from a given directory.
     diskCleanup.filterEqual('/path/to/directory', size, (err, result) => { 
         if (err) {
@@ -99,7 +100,34 @@ This project offers a set of functions to perform disk cleanup operations in Nod
     });
 
 
+
+    //if u know size not in bytes than you can simply convert by functions:
+    diskCleanup.filterSmaller('/path/to/directory', kb_to_bytes(size in bytes), (err, result) => {
+    if (err) {
+        console.error('Error:', err);
+    } else {
+        console.log('Result:', result);
+    }
+    });
+
+
+
+
     
+    ```
+
+>> ***Size conversion***
+- ```js
+
+    kb_to_bytes(20) // convert 20 kb into bytes
+    mb_to_bytes(20) //20 mb to bytes
+    gb_to_bytes(10) //10 gb to bytes
+    tb_to_bytes(20)
+    pb_to_bytes(20)
+    eb_to_bytes(20)
+    zb_to_bytes(20)
+    yb_to_bytes(20)
+
     ```
 
 ## Contributing:
