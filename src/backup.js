@@ -1,9 +1,11 @@
 const fs= require('fs');
 const path = require("path");
+let current=process.cwd()
+let defaultbackup=current+"/backup"
 
 
 
-function createBackupDirectory(directoryPath) {
+function createBackupDirectory(directoryPath=current) {
     const backupPath = path.join(directoryPath, 'backup');
     if (!fs.existsSync(backupPath)) {
         fs.mkdirSync(backupPath);
@@ -11,7 +13,7 @@ function createBackupDirectory(directoryPath) {
     return backupPath;
 }
 
-function restoreBackup(backupPath, filename, dirPath) {
+function restoreBackup( filename,backupPath=defaultbackup, dirPath=current) {
     const backupFilePath = path.join(backupPath, filename);
     const restoredFilePath = path.join(dirPath, filename);
     fs.copyFileSync(backupFilePath, restoredFilePath);
@@ -20,14 +22,14 @@ function restoreBackup(backupPath, filename, dirPath) {
 
 
 
-function backupFile(filePath, backupPath) {
+function backupFile(filePath, backupPath=defaultbackup) {
     const fileName = path.basename(filePath);
     const backupFilePath = path.join(backupPath, fileName);
 
     fs.copyFileSync(filePath, backupFilePath); 
 }
 
-function removeBackupFile(backupPath, fileName) {
+function removeBackupFile(fileName,backupPath=defaultbackup) {
     const filePath = path.join(backupPath, fileName);
 
     fs.unlink(filePath, (err) => {
@@ -40,7 +42,7 @@ function removeBackupFile(backupPath, fileName) {
 }
 
 
-function removeBackupdir(backupPath) {
+function removeBackupdir(backupPath=defaultbackup) {
     fs.readdir(backupPath, (err, files) => {
         if (err) {
             console.error('Error reading directory:', err);
@@ -51,7 +53,7 @@ function removeBackupdir(backupPath) {
             const curPath = path.join(backupPath, file);
 
             if (fs.lstatSync(curPath).isDirectory()) {
-                removeBackup(curPath); 
+                removeBackupdir(curPath); 
             } else {
                 fs.unlinkSync(curPath); 
             }
