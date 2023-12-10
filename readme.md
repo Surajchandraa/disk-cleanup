@@ -11,6 +11,7 @@ This project offers a set of functions to perform disk cleanup operations in Nod
 
 ## Usage:
 
+note: if u don't give directory path than it will by default take current working directory as path. 
 
 >> ***Removing Temporary Files***
 - The removeTemporary function is used to delete temporary files from a specified directory.
