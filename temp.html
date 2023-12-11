@@ -14,7 +14,9 @@
 </blockquote>
 </blockquote>
 <ul>
-<li>The removeTemporary function is used to delete temporary files from a specified directory.</li>
+<li>
+<p>The removeTemporary function is used to delete temporary files from a specified directory.</p>
+</li>
 <li>
 <pre><code class="language-js">      const diskCleanup = require('disk-cleanup');
 
@@ -35,39 +37,42 @@
 </blockquote>
 </blockquote>
 <ul>
-<li>This package also offers backup and restore functionalities.</li>
 <li>
-<pre><code class="language-js">      const diskCleanup = require('disk-cleanup');
-
-
-      const backupPath = diskCleanup.createBackupDirectory('/path/to/directory');  // this function will create a backup directory inside the directory given by you
-      console.log('Backup directory created at:', backupPath); 
-
-
-      backupFile(&quot;/path/of/file&quot;,&quot;/path/of/backup directory&quot;);
-      // this function will backup a file you provided by path inside backup directory path you provided.
-
-
-      restoreBackup(&quot;backupPath&quot;, &quot;filename&quot;, &quot;dirPath&quot;);
-      //restore the backup file
-      // backuppath- backup directory path inside which the file is saved or backup.
-      // filename- the name of file
-      // dirpath- path of directory where you want to restore
-
-      removeBackupFile(&quot;backupPath&quot;, &quot;fileName&quot;);
-      // removes the backup file
-      // backuppath - this is the path of backup directory
-      // filename - file name u want to delete
-
-      removeBackupdir(&quot;backupPath&quot;);
-      //remove the backup directory all the backup will be deleted
-      //backuppath - path of backup directory you want to delete
-
-
-
-
-
-</code></pre>
+<p>This package also offers backup and restore functionalities.</p>
+<p>*<strong>const diskCleanup = require('disk-cleanup');</strong></p>
+<p>*<strong>const backupPath = diskCleanup.createBackupDirectory('/path/to/directory');</strong></p>
+<ul>
+<li>this function will create a backup directory inside the directory given by you.</li>
+<li>If path of directory is not given than backup directory will be created in current working  directory.</li>
+<li>console.log('Backup directory created at:', backupPath);</li>
+</ul>
+<p>*<strong>diskCleanup.backupFile(&quot;/path/of/file&quot;,&quot;/path/of/backup directory&quot;);</strong></p>
+<ul>
+<li>this function will backup a file you provided by path inside backup directory path you provided.</li>
+<li>if path of backup directory is not given it will search for backup directory in current working directory/</li>
+</ul>
+<p>*<strong>diskCleanup.restoreBackup( &quot;filename&quot;,&quot;backupPath&quot;, &quot;dirPath&quot;);</strong></p>
+<ul>
+<li>restore the backup file</li>
+<li><em><strong>backuppath-</strong></em> backup directory path inside which the file is saved or backup.</li>
+<li><em><strong>filename-</strong></em> the name of file</li>
+<li><em><strong>dirpath-</strong></em> path of directory where you want to restore</li>
+<li>If backup path is not given than it will search for backup directory in you current working directory</li>
+<li>if dirPath is not given than it will also restore the files in the current working directory.</li>
+</ul>
+<p>*<strong>diskCleanup.removeBackupFile( &quot;fileName&quot;, &quot;backupPath&quot;);</strong></p>
+<ul>
+<li>removes the backup file</li>
+<li><em><strong>backuppath-</strong></em> this is the path of backup directory</li>
+<li><em><strong>filename-</strong></em> file name u want to delete</li>
+<li>If backupPath is not given than it will search for backup directory in current working directory</li>
+</ul>
+<p>*<strong>diskCleanup.removeBackupdir(&quot;backupPath&quot;);</strong></p>
+<ul>
+<li>remove the backup directory all the backup will be deleted</li>
+<li><em><strong>backuppath-</strong></em> path of backup directory you want to delete</li>
+<li>If backupPath is not given than it will search for backup directory in current working directory</li>
+</ul>
 </li>
 </ul>
 <blockquote>
@@ -135,12 +140,13 @@
 </blockquote>
 </blockquote>
 <ul>
+<li>convert the data size into bytes usefull for filtering functions.</li>
 <li>
 <pre><code class="language-js">
   kb_to_bytes(20) // convert 20 kb into bytes
   mb_to_bytes(20) //20 mb to bytes
-  gb_to_bytes(10) //10 gb to bytes
-  tb_to_bytes(20) //20 tb to bytes
+  gb_to_bytes(10) 
+  tb_to_bytes(20)
   pb_to_bytes(20)
   eb_to_bytes(20)
   zb_to_bytes(20)
