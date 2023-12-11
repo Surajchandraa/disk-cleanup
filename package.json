@@ -1,6 +1,6 @@
 {
   "name": "disk-cleanup",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This project offers a set of functions to perform disk cleanup operations in Node.js, including backup creation, restoration, and removal of files and directories.",
   "main": "index.js",
   "scripts": {
