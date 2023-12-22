@@ -4,6 +4,8 @@ This project offers a set of functions to perform disk cleanup operations in Nod
 ## Prerequisites:
 - Make sure you have Node.js installed on your system.
 
+## disk-cleanup-cli available [https://www.npmjs.com/package/disk-cleanup-cli]
+
 ## Installation:
 ```bash
     npm install disk-cleanup
